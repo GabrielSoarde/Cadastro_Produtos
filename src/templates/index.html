@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+        <a href="/create" class="button-link">
+            Insert Product
+        </a>
+
+    <h1>Product List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+       
+            {% for product in produtos %}
+                <tr>
+                    <td>{{ product.0 }}</td>
+                    <td>{{ product.1 }}</td>
+                    <td>{{ product.2 }}</td>
+                    <td>{{ product.3 }}</td>
+                    <td>
+                    <form action="/delete/product/{{ product.0 }}" method="POST">                       
+                            <button class="submit-button">Delete</button>
+                    </td>
+                    
+                    <td>
+                    </form>
+                    <form action="/update/product/{{ product.0 }}">
+                            <button class="submit-button">Update</button>
+                    </td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+
+{% endblock %}
